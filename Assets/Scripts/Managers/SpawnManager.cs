@@ -2,7 +2,7 @@
 
 public class SpawnManager : MonoBehaviour
 {
-    private const float pipeThreshold = -2;
+    private const float pipeThreshold = 12;
 
     [SerializeField] SpawnData spawnData;
 
@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Move()
     {
-        if (transform.position.y <= -spawnData.PathLength * 20 + 10)
+        if (transform.position.y <= -spawnData.PathLength * pipeThreshold + 10)
         {
             transform.position = Vector3.zero;
         }
@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
                 scaleValue = newPipe.transform.localScale.y;
                 lastPipeScaleValue = newPipe.transform.localScale.x;
             }
-            pipePos = newPipe.transform.position + (Vector3.up * scaleValue * pipeThreshold);
+            pipePos = newPipe.transform.position + (Vector3.up * pipeThreshold);
         }
         GameObject finishPipe = Instantiate(spawnData.FinishPipePrefab, pipePos, Quaternion.identity, transform);
         finishPipe.transform.localScale = new Vector3(lastPipeScaleValue, finishPipe.transform.localScale.y, lastPipeScaleValue);
