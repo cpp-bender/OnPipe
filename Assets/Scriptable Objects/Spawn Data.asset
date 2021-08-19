@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8677dad30543ae418c45a26ba7f514d, type: 3}
+  m_Name: Spawn Data
+  m_EditorClassIdentifier: 
+  largePipePrefab: {fileID: 8160511752253927026, guid: 44edee8e4f9dc714ba9e5f6e1f9250c1,
+    type: 3}
+  smallPipePrefab: {fileID: 4665551404445042007, guid: 4eb08f61a1c1e89469ff279230bdad5f,
+    type: 3}
+  finishPipePrefab: {fileID: 1879442443605778015, guid: f2cdea1ffb116094e9a8e1292a46d45c,
+    type: 3}
+  smallPipeSpawnChance: 50
+  pathLength: 3
+  moveSpeed: 3
