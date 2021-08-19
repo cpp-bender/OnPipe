@@ -4,9 +4,36 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] PlayerData playerData;
 
+    private float minScaleValue;
+
     private void Update()
     {
+        SetMinScaleValue();
         Scale();
+    }
+
+    private void SetMinScaleValue()
+    {
+        //Handles player object min. scale value
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, .1f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Path"))
+            {
+                minScaleValue = hitCollider.transform.parent.parent.transform.localScale.x / 2f;
+                CheckIfGameOver();
+            }
+        }
+    }
+
+    private void CheckIfGameOver()
+    {
+        //Checks if player hits a larger pipe
+        if (transform.localScale.x < playerData.MinScaleValue)
+        {
+            //TODO: Finish game here!
+            Debug.Log("Game Over!");
+        }
     }
 
     private void Scale()
@@ -27,9 +54,9 @@ public class PlayerController : MonoBehaviour
         //Scales down player object
         float currentScaleValue = transform.localScale.x;
         transform.localScale = new Vector3(
-            Mathf.Max(.5f, currentScaleValue - (playerData.ScaleDownFactor * Time.deltaTime)),
+            Mathf.Max(minScaleValue, currentScaleValue - (playerData.ScaleDownFactor * Time.deltaTime)),
             transform.localScale.y,
-            Mathf.Max(.5f, currentScaleValue - (playerData.ScaleDownFactor * Time.deltaTime)));
+            Mathf.Max(minScaleValue, currentScaleValue - (playerData.ScaleDownFactor * Time.deltaTime)));
     }
 
     private void ScaleUp()

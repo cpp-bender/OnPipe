@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Corn
   - Obstacle
+  - Path
+  - Road
   layers:
   - Default
   - TransparentFX
