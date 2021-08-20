@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void CheckIfGameOver()
     {
         //Checks if player hits a larger pipe
-        if (transform.localScale.x < playerData.MinScaleValue)
+        if (transform.localScale.x < minScaleValue)
         {
             //TODO: Finish game here!
             Debug.Log("Game Over!");
