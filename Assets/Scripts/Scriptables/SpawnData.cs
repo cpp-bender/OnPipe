@@ -12,6 +12,7 @@ public class SpawnData : ScriptableObject
     [SerializeField] [Range(1f, 100f)] int smallPipeSpawnChance;
     [Range(1, 7)] [SerializeField] int pathLength;
     [Range(1f, 10f)] [SerializeField] float moveSpeed;
+    private const float pipeThreshold = 12;
 
     public GameObject LargePipePrefab { get => largePipePrefab; }
     public GameObject SmallPipePrefab { get => smallPipePrefab; }
@@ -19,4 +20,5 @@ public class SpawnData : ScriptableObject
     public int PathLength { get => pathLength; }
     public int SmallPipeSpawnChance { get => smallPipeSpawnChance; }
     public float MoveSpeed { get => moveSpeed; }
+    public float PipeThreshold { get => pipeThreshold; }
 }

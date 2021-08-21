@@ -2,8 +2,6 @@
 
 public class SpawnManager : MonoBehaviour
 {
-    private const float pipeThreshold = 12;
-
     [SerializeField] SpawnData spawnData;
 
     private void Start()
@@ -18,7 +16,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Move()
     {
-        if (transform.position.y <= -spawnData.PathLength * pipeThreshold + 10)
+        //Moves path along y-axis
+        if (transform.position.y <= -spawnData.PathLength * spawnData.PipeThreshold + 10)
         {
             transform.position = Vector3.zero;
         }
@@ -27,9 +26,10 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnPath()
     {
+        //Spawns a path in pipes
         Vector3 pipePos = Vector3.zero;
         float scaleValue = 0f;
-        float lastPipeScaleValue = 0f;
+        float lastScaleValue = 0f;
         for (int i = 0; i < spawnData.PathLength; i++)
         {
             GameObject newPipe = null;
@@ -37,17 +37,17 @@ public class SpawnManager : MonoBehaviour
             {
                 newPipe = Instantiate(spawnData.SmallPipePrefab, pipePos, Quaternion.identity, transform);
                 scaleValue = newPipe.transform.localScale.y;
-                lastPipeScaleValue = newPipe.transform.localScale.x;
+                lastScaleValue = newPipe.transform.localScale.x;
             }
             else
             {
                 newPipe = Instantiate(spawnData.LargePipePrefab, pipePos, Quaternion.identity, transform);
                 scaleValue = newPipe.transform.localScale.y;
-                lastPipeScaleValue = newPipe.transform.localScale.x;
+                lastScaleValue = newPipe.transform.localScale.x;
             }
-            pipePos = newPipe.transform.position + (Vector3.up * pipeThreshold);
+            pipePos = newPipe.transform.position + (Vector3.up * spawnData.PipeThreshold);
         }
         GameObject finishPipe = Instantiate(spawnData.FinishPipePrefab, pipePos, Quaternion.identity, transform);
-        finishPipe.transform.localScale = new Vector3(lastPipeScaleValue, finishPipe.transform.localScale.y, lastPipeScaleValue);
+        finishPipe.transform.localScale = new Vector3(lastScaleValue, finishPipe.transform.localScale.y, lastScaleValue);
     }
 }
