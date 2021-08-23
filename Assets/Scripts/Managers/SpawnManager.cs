@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
     private void Move()
     {
         //Moves path along y-axis
-        if (transform.position.y <= -spawnData.PathLength * spawnData.PipeThreshold + 10)
+        if (transform.position.y <= -spawnData.PathLength * spawnData.PipeThreshold + 12)
         {
             transform.position = Vector3.zero;
         }

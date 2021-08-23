@@ -68,4 +68,13 @@ public class PlayerController : MonoBehaviour
             transform.localScale.y,
             Mathf.Min(playerData.MaxScaleValue, currentScaleValue + (playerData.ScaleUpFactor * Time.deltaTime)));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //TODO: Explode corn prefab
+        if (other.CompareTag("Corn"))
+        {
+            other.GetComponent<CornController>().DoExplodeEffect();
+        }
+    }
 }
