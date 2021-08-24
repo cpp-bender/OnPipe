@@ -11,13 +11,25 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (!GameManager.Instance.isGameOver)
+        {
+            CheckIfGameOver();
+            Move();
+        }
+    }
+
+    private void CheckIfGameOver()
+    {
+        if (transform.position.y <= -spawnData.PathLength * spawnData.PipeThreshold)
+        {
+            GameManager.Instance.OnGameWin?.Invoke();
+        }
     }
 
     private void Move()
     {
         //Moves path along y-axis
-        if (transform.position.y <= (-spawnData.PathLength * spawnData.PipeThreshold - 12) / 2)
+        if (!GameManager.Instance.isGameStarted && transform.position.y <= (-spawnData.PathLength * spawnData.PipeThreshold - 12) / 2)
         {
             transform.position = Vector3.zero;
         }

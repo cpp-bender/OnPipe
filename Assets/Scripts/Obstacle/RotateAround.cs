@@ -6,7 +6,10 @@ public class RotateAround : MonoBehaviour
 
     private void Update()
     {
-        Rotate();
+        if (!GameManager.Instance.isGameOver)
+        {
+            Rotate();
+        }
     }
 
     private void Rotate()

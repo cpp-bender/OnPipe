@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1879442443605778000}
   m_Layer: 0
   m_Name: Finish Pipe
-  m_TagString: Untagged
+  m_TagString: Finish Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1879442444147523829}
   m_Layer: 0
   m_Name: Pipe Head
-  m_TagString: Untagged
+  m_TagString: Finish Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

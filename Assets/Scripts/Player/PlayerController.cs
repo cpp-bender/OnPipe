@@ -8,20 +8,23 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        SetMinScaleValue();
-        Scale();
+        if (!GameManager.Instance.isGameOver && GameManager.Instance.isGameStarted)
+        {
+            CheckIfGameOver();
+            SetMinScaleValue();
+            Scale();
+        }
     }
 
     private void SetMinScaleValue()
     {
-        //Handles player object min. scale value
+        //Handles player  min. scale value
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, .1f);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Path"))
             {
                 minScaleValue = hitCollider.transform.parent.parent.transform.localScale.x / 2f;
-                CheckIfGameOver();
             }
         }
     }
@@ -31,8 +34,7 @@ public class PlayerController : MonoBehaviour
         //Checks if player hits a larger pipe
         if (transform.localScale.x < minScaleValue)
         {
-            //TODO: Finish game here!
-            Debug.Log("Game Over!");
+            GameManager.Instance.OnGameOver?.Invoke();
         }
     }
 
@@ -71,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //TODO: Explode corn prefab
         if (other.CompareTag("Corn"))
         {
             other.GetComponent<CornController>().DoExplodeEffect();

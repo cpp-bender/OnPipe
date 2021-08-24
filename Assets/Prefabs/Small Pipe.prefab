@@ -11,10 +11,14 @@ GameObject:
   - component: {fileID: 4136225798480870819}
   - component: {fileID: 1065392578088481286}
   - component: {fileID: 2967308853795735244}
+  - component: {fileID: 2132379591271324068}
+  - component: {fileID: 3207273088684882874}
+  - component: {fileID: 1521067816316786577}
   - component: {fileID: 2294809308353039700}
+  - component: {fileID: 6911876444353616285}
   m_Layer: 0
   m_Name: Rotating Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +84,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!54 &2132379591271324068
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615550329744156441}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &3207273088684882874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615550329744156441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23240227, y: 0.33941656, z: 1.1941622}
+  m_Center: {x: 1.0801445, y: -0.0000000012647167, z: -0.017250607}
+--- !u!65 &1521067816316786577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615550329744156441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18461649, y: 0.33941656, z: 1.1941622}
+  m_Center: {x: -1.0824454, y: -0.0000000012647167, z: -0.017250607}
 --- !u!114 &2294809308353039700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +139,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationData: {fileID: 11400000, guid: e87d3c4f2fadde34291226de21b6bd21, type: 2}
+--- !u!114 &6911876444353616285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615550329744156441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38c8783f823ff047b5e890f649653b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4665551404445042007
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,10 +200,13 @@ GameObject:
   - component: {fileID: 6198814965945834666}
   - component: {fileID: 7037233731234206479}
   - component: {fileID: 5065900331079854021}
+  - component: {fileID: 7699385269549969977}
   - component: {fileID: 5965190314698094595}
+  - component: {fileID: 3175453775052523837}
+  - component: {fileID: 7317502255225158783}
   m_Layer: 0
   m_Name: Rotating Obstacle (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,6 +272,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!54 &7699385269549969977
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723115524590650896}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &5965190314698094595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +301,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationData: {fileID: 11400000, guid: e87d3c4f2fadde34291226de21b6bd21, type: 2}
+--- !u!114 &3175453775052523837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723115524590650896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38c8783f823ff047b5e890f649653b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7317502255225158783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723115524590650896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.392689, y: 0.33941656, z: 1.6804855}
+  m_Center: {x: -0.000000119209275, y: -0.000000007450581, z: -0.0000005066394}
 --- !u!1001 &655160133915844085
 PrefabInstance:
   m_ObjectHideFlags: 0

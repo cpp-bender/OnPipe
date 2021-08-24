@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Path
   - Road
+  - Finish Pipe
   layers:
   - Default
   - TransparentFX
