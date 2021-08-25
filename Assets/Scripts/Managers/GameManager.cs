@@ -3,6 +3,8 @@ using System;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
+    [SerializeField] internal LevelData levelData;
+
     [HideInInspector] public bool isGameOver;
     [HideInInspector] public bool isGameStarted;
 
@@ -20,6 +22,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
+        //Subscribes events
         OnGameStart = GameStart;
         OnGameOver = GameOver;
         OnGameWin = GameWin;
@@ -28,6 +31,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Update()
     {
         CheckIfGameStarted();
+    }
+
+    public void SetLevelData()
+    {
+        //Sets current level data randomly
+        levelData.pathLength = UnityEngine.Random.Range(3, 7);
+        levelData.pathMoveSpeed = UnityEngine.Random.Range(3f, 5f);
+        levelData.smallPipeSpawnChance = UnityEngine.Random.Range(25, 100);
+        levelData.pipeThreshold = 12;
     }
 
     private void CheckIfGameStarted()

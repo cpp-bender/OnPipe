@@ -4,6 +4,13 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] SpawnData spawnData;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     private void Start()
     {
         SpawnPath();
@@ -11,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.isGameOver)
+        if (!gameManager.isGameOver)
         {
             CheckIfGameOver();
             Move();
@@ -20,7 +27,7 @@ public class SpawnManager : MonoBehaviour
 
     private void CheckIfGameOver()
     {
-        if (transform.position.y <= -spawnData.PathLength * spawnData.PipeThreshold)
+        if (transform.position.y <= -gameManager.levelData.pathLength * gameManager.levelData.pipeThreshold)
         {
             GameManager.Instance.OnGameWin?.Invoke();
         }
@@ -29,23 +36,24 @@ public class SpawnManager : MonoBehaviour
     private void Move()
     {
         //Moves path along y-axis
-        if (!GameManager.Instance.isGameStarted && transform.position.y <= (-spawnData.PathLength * spawnData.PipeThreshold - 12) / 2)
+        if (!GameManager.Instance.isGameStarted && transform.position.y <= (-gameManager.levelData.pathLength * gameManager.levelData.pipeThreshold - 12) / 2)
         {
             transform.position = Vector3.zero;
         }
-        transform.Translate(Vector3.down * Time.deltaTime * spawnData.MoveSpeed);
+        transform.Translate(Vector3.down * Time.deltaTime * gameManager.levelData.pathMoveSpeed);
     }
 
     private void SpawnPath()
     {
         //Spawns a path in pipes
+        gameManager.SetLevelData();
         Vector3 pipePos = Vector3.zero;
         float scaleValue = 0f;
         float lastScaleValue = 0f;
-        for (int i = 0; i < spawnData.PathLength; i++)
+        for (int i = 0; i < gameManager.levelData.pathLength; i++)
         {
             GameObject newPipe = null;
-            if (Random.Range(0, 100 / spawnData.SmallPipeSpawnChance) == 0)
+            if (Random.Range(0, 100 / gameManager.levelData.smallPipeSpawnChance) == 0)
             {
                 newPipe = Instantiate(spawnData.SmallPipePrefab, pipePos, Quaternion.identity, transform);
                 scaleValue = newPipe.transform.localScale.y;
@@ -57,7 +65,7 @@ public class SpawnManager : MonoBehaviour
                 scaleValue = newPipe.transform.localScale.y;
                 lastScaleValue = newPipe.transform.localScale.x;
             }
-            pipePos = newPipe.transform.position + (Vector3.up * spawnData.PipeThreshold);
+            pipePos = newPipe.transform.position + (Vector3.up * gameManager.levelData.pipeThreshold);
         }
         GameObject finishPipe = Instantiate(spawnData.FinishPipePrefab, pipePos, Quaternion.identity, transform);
         finishPipe.transform.localScale = new Vector3(lastScaleValue, finishPipe.transform.localScale.y, lastScaleValue);
