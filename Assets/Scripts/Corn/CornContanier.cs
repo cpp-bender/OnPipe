@@ -6,12 +6,12 @@ public class CornContanier : MonoBehaviour
 
     private void Start()
     {
-        CreateCorn(new Vector3(.5f, 1f, .5f));
+        CreateCorn();
     }
 
-    private void CreateCorn(Vector3 cornScale)
+    private void CreateCorn()
     {
-        //Creates a corn
+        //Creates a hand-made corn
         for (int i = 0; i < cornData.SoloCornCount; i++)
         {
             var soloCorn = Instantiate(cornData.SoloCornPrefab, transform);
@@ -19,6 +19,5 @@ public class CornContanier : MonoBehaviour
             soloCorn.transform.SetParent(transform);
             soloCorn.transform.RotateAround(Vector3.zero, Vector3.up, cornData.AngleBetweenPerSoloCorn * i);
         }
-        transform.localScale = new Vector3(.5f, 1f, .5f);
     }
 }

@@ -4,8 +4,9 @@
 public class CornData : ScriptableObject
 {
     [SerializeField] GameObject soloCornPrefab;
-    private const int soloCornCount = 32;
-    private const float angleBetweenPerSoloCorn = 12f;
+    [Header("Constant Values")]
+    [SerializeField] int soloCornCount = 32;
+    [SerializeField] float angleBetweenPerSoloCorn = 12f;
 
     public GameObject SoloCornPrefab { get => soloCornPrefab; }
     public int SoloCornCount { get => soloCornCount; }

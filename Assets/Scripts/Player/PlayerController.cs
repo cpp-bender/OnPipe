@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.Instance.isGameOver && GameManager.Instance.isGameStarted)
         {
-            CheckIfGameOver();
             SetMinScaleValue();
+            CheckIfGameOver();
             Scale();
         }
     }
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Corn"))
         {
-            other.GetComponent<CornController>().DoExplodeEffect();
+            other.GetComponent<CornController>().DoExplosionEffect();
         }
     }
 }

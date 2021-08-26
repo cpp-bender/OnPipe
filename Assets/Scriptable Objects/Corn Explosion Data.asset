@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Corn Explosion Data
   m_EditorClassIdentifier: 
   power: 2
-  radius: 2
+  radius: 5
   destroyDelay: 2

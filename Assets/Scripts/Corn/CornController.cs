@@ -13,9 +13,10 @@ public class CornController : MonoBehaviour
         cornRenderer = GetComponent<Renderer>();
     }
 
-    public void DoExplodeEffect()
+    public void DoExplosionEffect()
     {
         //Explodes corn
+        GameManager.Instance.OnCornExplosion?.Invoke();
         cornRenderer.enabled = false;
         SpawnCorn();
         foreach (Transform soloCorn in corn.transform)
@@ -27,6 +28,7 @@ public class CornController : MonoBehaviour
                     transform.position,
                     explosionData.Radius,
                     explosionData.UpwardsModifier);
+                soloCorn.GetComponent<Collider>().isTrigger = true;
             }
         }
         Destroy(corn, explosionData.DestroyDelay);
